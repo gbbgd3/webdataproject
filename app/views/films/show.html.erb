@@ -1,6 +1,8 @@
-<div class="film-details">
-  <h2><%= film.title %></h2>
-  <p><strong>Release Date:</strong> <%= film.release_date %></p>
+<div >
+  <h2><%= @film.title %></h2>
+  <p><strong>Release Date:</strong> <%= @film.release_date %></p>
   <p><strong>Opening Crawl:</strong></p>
-  <p><%= film.opening_crawl %></p>
+  <p><%= @film.opening_crawl %></p>
 </div>
+
+<%= link_to 'Back', films_path %>
