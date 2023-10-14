@@ -1,16 +1,9 @@
-<h1>All People</h1>
+<h1>All Characters In Star Wars</h1>
 
 <ul>
   <% @people.each do |person| %>
     <li>
-      Name: <%= person.name %><br>
-      Species: <%= person.species.name if person.species %><br>
-      Films:
-      <ul>
-        <% person.films.each do |film| %>
-          <li><%= film.title %></li>
-        <% end %>
-      </ul>
+      <%= link_to person.name, person_path(person)%>
     </li>
   <% end %>
 </ul>

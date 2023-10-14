@@ -1,0 +1,18 @@
+<h1><%= @person.name %></h1>
+<p>Birth Year: <%= @person.birth_year %></p>
+<p>Height: <%= @person.height %> cm</p>
+<p>Gender: <%= @person.gender %></p>
+
+<h2>Species</h2>
+<ul>
+    <li><%= @person.species.name %></li>
+</ul>
+
+<h2>Movies</h2>
+<ul>
+  <% @person.films.each do |film| %>
+    <li><%= film.title%></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Back', people_path %>
