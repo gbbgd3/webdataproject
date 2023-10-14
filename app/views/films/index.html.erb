@@ -1,0 +1,9 @@
+<h1>All Characters In Star Wars</h1>
+
+<ul>
+  <% @films.each do |film| %>
+    <li>
+      <%= link_to film.name, film_path(film)%>
+    </li>
+  <% end %>
+</ul>

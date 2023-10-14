@@ -6,4 +6,6 @@ class PeopleController < ApplicationController
   def show
     @person = Person.find_by(params[:id])
   end
+
+  def show; end
 end
