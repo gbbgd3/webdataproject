@@ -6,4 +6,8 @@ class FilmsController < ApplicationController
   def show
     @film = Film.find_by(params[:id])
   end
+
+  def search
+
+  end
 end

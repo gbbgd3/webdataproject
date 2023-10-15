@@ -6,4 +6,6 @@ class SpeciesController < ApplicationController
   def show
     @specific_species = Species.find_by(params[:id])
   end
+
+  def search; end
 end
