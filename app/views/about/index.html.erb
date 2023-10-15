@@ -1,1 +1,38 @@
-About page
+<div class="description">
+  <h2>Data Sources: SWAPI API</h2>
+
+  <h3>Description:</h3>
+  <p>
+    The SWAPI (Star Wars API) is used to extract data related to characters (People), species (Species), and films (Films) in the Star Wars universe. This data will provide details about Star Wars characters, their respective species, and the films they appeared in.
+  </p>
+
+  <h3>Data Structure:</h3>
+  <ol>
+    <li>
+      <h4>People (Characters):</h4>
+      <ul>
+        <li>API: <code>https://swapi.dev/api/people/</code></li>
+        <li>Attributes: <code>name</code>, <code>birth_year</code>, <code>height</code>, <code>gender</code>, etc.</li>
+        <li>Relationships: Each person has a species and can appear in multiple films.</li>
+      </ul>
+    </li>
+    <li>
+      <h4>Species:</h4>
+      <ul>
+      <li>API: <code>https://swapi.dev/api/species/</code></li>
+        <li>Attributes: <code>name</code>, <code>classification</code>, <code>average_lifespan</code>, etc.</li>
+        <li>Relationships: Each species can have people belonging to it.</li>
+      </ul>
+    </li>
+    <li>
+      <h4>Films:</h4>
+      <ul>
+      <li>API: <code>https://swapi.dev/api/films/</code></li>
+        <li>Attributes: <code>title</code>, <code>release_date</code>, <code>opening_crawl</code>, etc.</li>
+        <li>Relationships: Each film can involve multiple characters (people).</li>
+      </ul>
+    </li>
+  </ol>
+<%= image_tag("dataprojERD.drawio.png", alt: "ERD IMG") %>
+
+</div>
