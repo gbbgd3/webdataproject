@@ -17,25 +17,25 @@ def fetch_data(url)
 end
 
 # fetches all data
-# def fetch_all_data(url)
-#   all_data = []
-#   next_url = url
+def fetch_all_data(url)
+  all_data = []
+  next_url = url
 
-#   while next_url
-#     response = fetch_data(next_url)
-#     all_data += response['results']
-#     next_url = response['next']
-#   end
+  while next_url
+    response = fetch_data(next_url)
+    all_data += response['results']
+    next_url = response['next']
+  end
 
-#   all_data
-# end
+  all_data
+end
 
-films_data = fetch_data('https://swapi.dev/api/films/')
-people_data = fetch_data('https://swapi.dev/api/people/')
-species_data = fetch_data('https://swapi.dev/api/species/')
+films_data = fetch_all_data('https://swapi.dev/api/films/')
+people_data = fetch_all_data('https://swapi.dev/api/people/')
+species_data = fetch_all_data('https://swapi.dev/api/species/')
 
 # Fill database with species
-species_data['results'].each do |data|
+species_data.each do |data|
   Species.create(
     name: data['name'],
     classification: data['classification'],
@@ -45,7 +45,7 @@ species_data['results'].each do |data|
 end
 
 # Fill database with films
-films_data['results'].each do |data|
+films_data.each do |data|
   Film.create(
     opening_crawl: data['opening_crawl'],
     release_date: data['release_date'],
@@ -55,24 +55,36 @@ films_data['results'].each do |data|
 end
 
 # Fill database with people
-people_data['results'].each do |data|
+people_data.each do |data|
   species_url = data['species'][0]
-  species = Species.find_by(url: species_url)
 
-  next if species.nil?
+  if species_url && species_url != 'null' && !species_url.empty?
+    species = Species.find_by(url: species_url)
+    next if species.nil?
 
-  Person.create(
-    name: data['name'],
-    birth_year: data['birth_year'],
-    height: data['height'],
-    gender: data['gender'],
-    url: data['url'],
-    species_id: species.id
-  )
+    Person.create(
+      name: data['name'],
+      birth_year: data['birth_year'],
+      height: data['height'],
+      gender: data['gender'],
+      url: data['url'],
+      species_id: species.id
+    )
+  else
+    default_species = Species.find_or_create_by(name: 'Unknown')
+    Person.create(
+      name: data['name'],
+      birth_year: data['birth_year'],
+      height: data['height'],
+      gender: data['gender'],
+      url: data['url'],
+      species_id: default_species.id
+    )
+  end
 end
 
 # Fill the join FilmPerson table
-films_data['results'].each do |data|
+films_data.each do |data|
   film = Film.find_by(url: data['url'])
 
   data['characters'].each do |character_url|

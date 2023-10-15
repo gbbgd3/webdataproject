@@ -1,6 +1,6 @@
 class FilmsController < ApplicationController
   def index
-    @films = Film.page(params[:page]).per(2)
+    @films = Film.page(params[:page]).per(10)
     @films_count = Film.all.count
   end
 
@@ -11,6 +11,6 @@ class FilmsController < ApplicationController
 
   def search
     query = params[:search]
-    @films = Film.where('title LIKE ?', "%#{query}%").page(params[:page]).per(1)
+    @films = Film.where('title LIKE ?', "%#{query}%").page(params[:page]).per(10)
   end
 end

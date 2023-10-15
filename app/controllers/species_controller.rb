@@ -1,6 +1,6 @@
 class SpeciesController < ApplicationController
   def index
-    @species = Species.page(params[:page]).per(5)
+    @species = Species.page(params[:page]).per(10)
     @species_count = Species.all.count
   end
 
@@ -11,6 +11,6 @@ class SpeciesController < ApplicationController
 
   def search
     query = params[:search]
-    @species = Species.where('name LIKE ?', "%#{query}%").page(params[:page]).per(5)
+    @species = Species.where('name LIKE ?', "%#{query}%").page(params[:page]).per(10)
   end
 end
