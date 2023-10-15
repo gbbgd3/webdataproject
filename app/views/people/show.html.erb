@@ -1,18 +1,21 @@
-<h1><%= @person.name %></h1>
-<p>Birth Year: <%= @person.birth_year %></p>
-<p>Height: <%= @person.height %> cm</p>
-<p>Gender: <%= @person.gender %></p>
+<div>
+  <h1><%= @person.name %></h1>
+  <p>Birth Year: <%= @person.birth_year %></p>
+  <p>Height: <%= @person.height %> cm</p>
+  <p>Gender: <%= @person.gender %></p>
 
-<h2>Species</h2>
-<ul>
-    <li><%= link_to @person.species.name, species_path(@person.species) %></li>
-</ul>
+  <h2>Species</h2>
+  <ul>
+      <li><%= link_to @person.species.name, species_path(@person.species) %></li>
+  </ul>
+  <%= link_to "View All Species", species_index_path %>
 
-<h2>Movies</h2>
-<ul>
-  <% @person.films.each do |film| %>
-    <li><%= link_to film.title, film_path(film)%></li>
-  <% end %>
-</ul>
-
+  <h2>Movies</h2>
+  <ul>
+    <% @person.films.each do |film| %>
+      <li><%= link_to film.title, film_path(film)%></li>
+    <% end %>
+  </ul>
+  <%= link_to "View All Films", films_path %>
+</div>
 <%= link_to 'Back', people_path %>
