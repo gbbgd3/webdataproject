@@ -8,6 +8,7 @@ class FilmsController < ApplicationController
   end
 
   def search
-
+    query = params[:search]
+    @films = Film.where('title LIKE ?', "%#{query}%").page(params[:page]).per(1)
   end
 end
