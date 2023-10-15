@@ -3,9 +3,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  get 'about', to: 'about#index'
-
   root 'people#index'
+  get 'about', to: 'about#index'
+  get 'people/search', to: 'people#search'
+
   resources :people, only: %i[index show]
   resources :films, only: %i[index show]
   resources :species, only: %i[index show]

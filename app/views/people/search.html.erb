@@ -1,0 +1,12 @@
+<% if @people.any? %>
+  <h1>Search results for "<%= params[:search]%>"</h1>
+  <ul>
+    <% @people.each do |person| %>
+      <li>
+        <%= link_to person.name, person_path(person) %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <h1>No search results for "<%= params[:search] %>"</h1>
+<% end %>
