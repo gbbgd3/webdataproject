@@ -7,5 +7,5 @@ class PeopleController < ApplicationController
     @person = Person.find_by(params[:id])
   end
 
-  def show; end
+  def search; end
 end

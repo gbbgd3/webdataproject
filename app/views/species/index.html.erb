@@ -1,0 +1,9 @@
+<h1>All Species In Star Wars</h1>
+
+<ul>
+  <% @species.each do |s| %>
+    <li>
+      <%= link_to s.name, species_path(s)%>
+    </li>
+  <% end %>
+</ul>
