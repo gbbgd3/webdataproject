@@ -9,6 +9,6 @@ class PeopleController < ApplicationController
 
   def search
     query = params[:search]
-    @people = Person.where('name LIKE ?', "%#{query}%")
+    @people = Person.where('name LIKE ?', "%#{query}%").page(params[:page]).per(1)
   end
 end
