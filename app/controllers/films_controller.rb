@@ -5,6 +5,7 @@ class FilmsController < ApplicationController
 
   def show
     @film = Film.find_by(params[:id])
+    @characters = @film.people.limit(10)
   end
 
   def search

@@ -3,6 +3,15 @@
   <p><strong>Release Date:</strong> <%= @film.release_date %></p>
   <p><strong>Opening Crawl:</strong></p>
   <p><%= @film.opening_crawl %></p>
+
+<h4>Characters</h4>
+<ul>
+  <% @characters.each do |character| %>
+    <li><%= link_to character.name, person_path(character) %></li>
+  <% end %>
+</ul>
+
+<%= link_to "View All Characters", people_path %>
 </div>
 
 <%= link_to 'Back', films_path %>
