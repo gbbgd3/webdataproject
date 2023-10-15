@@ -5,13 +5,13 @@
 
 <h2>Species</h2>
 <ul>
-    <li><%= @person.species.name %></li>
+    <li><%= link_to @person.species.name, species_path(@person.species) %></li>
 </ul>
 
 <h2>Movies</h2>
 <ul>
   <% @person.films.each do |film| %>
-    <li><%= film.title%></li>
+    <li><%= link_to film.title, film_path(film)%></li>
   <% end %>
 </ul>
 
