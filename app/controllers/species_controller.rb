@@ -1,6 +1,6 @@
 class SpeciesController < ApplicationController
   def index
-    @species = Species.page(params[:page]).per(10)
+    @species = Species.page(params[:page]).per(5)
   end
 
   def show
@@ -9,6 +9,6 @@ class SpeciesController < ApplicationController
 
   def search
     query = params[:search]
-    @species = Species.where('name LIKE ?', "%#{query}%").page(params[:page]).per(10)
+    @species = Species.where('name LIKE ?', "%#{query}%").page(params[:page]).per(5)
   end
 end
