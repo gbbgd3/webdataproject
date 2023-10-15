@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'about', to: 'about#index'
   get 'people/search', to: 'people#search'
   get 'films/search', to: 'films#search'
+  get 'species/search', to: 'species#search'
 
   resources :people, only: %i[index show]
   resources :films, only: %i[index show]
