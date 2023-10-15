@@ -2,5 +2,18 @@
   <h2><%= @specific_species.name %></h2>
   <p><strong>Classification:</strong> <%= @specific_species.classification %></p>
   <p><strong>Average Lifespan:</strong> <%= @specific_species.average_lifespan %></p>
+
+<h2>Characters</h2>
+<% if @people.any? %>
+  <ul>
+  <% @people.each do |person| %>
+    <li><%= link_to person.name, person_path(person) %></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are no characters of this species</p>
+<% end %>
+  <%= link_to "View All Characters", people_path %>
+
 </div>
 <%= link_to 'Back', species_index_path %>

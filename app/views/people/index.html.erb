@@ -1,10 +1,2 @@
 <h1>All Characters In Star Wars</h1>
-
-<%= paginate @people %>
-<ul>
-  <% @people.each do |person| %>
-    <li>
-      <%= link_to person.name, person_path(person)%>
-    </li>
-  <% end %>
-</ul>
+<%= render partial: 'common/index', locals: {data: @people, data_count: @people_count} %>

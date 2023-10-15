@@ -1,10 +1,12 @@
 class SpeciesController < ApplicationController
   def index
     @species = Species.page(params[:page]).per(5)
+    @species_count = Species.all.count
   end
 
   def show
-    @specific_species = Species.find_by(params[:id])
+    @specific_species = Species.find_by(id: params[:id])
+    @people = @specific_species.people.limit(10)
   end
 
   def search

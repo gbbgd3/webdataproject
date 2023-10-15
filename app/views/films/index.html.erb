@@ -1,9 +1,2 @@
 <h1>All Star Wars Films</h1>
-<%= paginate @films %>
-<ul>
-  <% @films.each do |film| %>
-    <li>
-      <%= link_to film.title, film_path(film)%>
-    </li>
-  <% end %>
-</ul>
+<%= render partial: 'common/index', locals: {data: @films, data_count: @films_count} %>

@@ -1,10 +1,2 @@
 <h1>All Species In Star Wars</h1>
-
-<%= paginate @species %>
-<ul>
-  <% @species.each do |s| %>
-    <li>
-      <%= link_to s.name, species_path(s)%>
-    </li>
-  <% end %>
-</ul>
+<%= render partial: 'common/index', locals: {data: @species, data_count: @species_count} %>
