@@ -1,19 +1,20 @@
 <% if data.any? %>
   <h1>Search results for "<%= params[:search]%>"</h1>
   <%= paginate data %>
-  <ul>
-    <% data.each do |d| %>
-      <li>
-        <% if d.is_a?(Person) %>
-          <%= link_to d.name, person_path(d) %>
-        <% elsif d.is_a?(Film) %>
-          <%= link_to d.title, film_path(d) %>
-        <% elsif d.is_a?(Species) %>
-          <%= link_to d.name, species_path(d) %>
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
+<ul class="list-group mt-3">
+  <% data.each do |d| %>
+
+    <li class="list-group-item">
+      <% if d.is_a?(Person) %>
+        <%= link_to d.name, person_path(d) %>
+      <% elsif d.is_a?(Film) %>
+        <%= link_to d.title, film_path(d)%>
+      <% elsif d.is_a?(Species) %>
+        <%= link_to d.name, species_path(d) %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
 <% else %>
   <h1>No search results for "<%= params[:search] %>"</h1>
 <% end %>

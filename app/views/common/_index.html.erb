@@ -1,15 +1,16 @@
-<p>Total records: <%= data_count %></p>
-  <%= paginate data %>
-  <ul>
-    <% data.each do |d| %>
-      <li>
-        <% if d.is_a?(Person) %>
-          <%= link_to d.name, person_path(d) %>
-        <% elsif d.is_a?(Film) %>
-          <%= link_to d.title, film_path(d) %>
-        <% elsif d.is_a?(Species) %>
-          <%= link_to d.name, species_path(d) %>
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
+<p class="mt-3">Total records: <%= data_count %></p>
+<%= paginate data %>
+<ul class="list-group mt-3">
+  <% data.each do |d| %>
+
+    <li class="list-group-item">
+      <% if d.is_a?(Person) %>
+        <%= link_to d.name, person_path(d) %>
+      <% elsif d.is_a?(Film) %>
+        <%= link_to d.title, film_path(d)%>
+      <% elsif d.is_a?(Species) %>
+        <%= link_to d.name, species_path(d) %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
